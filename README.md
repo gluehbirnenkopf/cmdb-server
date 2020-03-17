@@ -23,6 +23,8 @@ http://localhost:8080/api/getProperties/master/cloud/jira.properties
 * Json and Yaml Support, not only Propertie Files
 * make it really RESTful
 * exploration of the CMDB Repo via api
+* Single Property retrieval
+* Write Properties
 
 ## Run Locally:
 ```bash
