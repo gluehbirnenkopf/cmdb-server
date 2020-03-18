@@ -1,11 +1,7 @@
 package com.leongregori.cmdbclient;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.hateoas.RepresentationModel;
 
 import java.io.*;
 import java.net.HttpURLConnection;
@@ -16,12 +12,11 @@ import java.util.Properties;
 
 /**
  * Loads cmdb file (url) from CMDB via GitHub API into Map (Properties).
- * @param cmdbFile the file to load.
+ * @param gitUrl the file to load.
  * @return a map of loaded cmdb properties.
  * @author Leon Gregori
  */
-
-public class CmdbGitInterface extends RepresentationModel<CmdbGitInterface> {
+public class CmdbGitInterface {
     String gitUrl;
     String gitRawUrl;
     String gitToken;
@@ -30,14 +25,18 @@ public class CmdbGitInterface extends RepresentationModel<CmdbGitInterface> {
 
     Logger logger = LoggerFactory.getLogger(CmdbGitInterface.class);
 
-    @JsonCreator
     public CmdbGitInterface(String gitUrl, String gitToken, String branch, String urlTail) {
+        if (gitUrl.matches("^http[s]?:\\/\\/")) {
+            logger.debug("gitURL is valid: "+gitUrl);
+        } else {
+            logger.error("gitUrl is invalid as it does start with a valid protocol: "+gitUrl);
+        }
+
         this.gitUrl=gitUrl;
         this.gitRawUrl=gitRawUrl="https://raw."+gitUrl.split("https://")[1];
         this.gitToken=gitToken;
         this.branch=branch;
         this.cmdbFilePath=urlTail;
-
     }
 
         HashMap getCmdb() {
