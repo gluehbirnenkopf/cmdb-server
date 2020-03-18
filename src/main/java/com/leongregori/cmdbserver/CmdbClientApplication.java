@@ -1,4 +1,4 @@
-package com.leongregori.cmdbclient;
+package com.leongregori.cmdbserver;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

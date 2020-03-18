@@ -1,0 +1,13 @@
+before_install:
+  - chmod +x gradlew
+  - echo $secret
+language: java
+before_cache:
+  - rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock
+  - rm -fr $HOME/.gradle/caches/*/plugin-resolution/
+cache:
+  directories:
+    - $HOME/.gradle/caches/
+    - $HOME/.gradle/wrapper/
+script:
+  - ./gradlew build --scan -s -PregistryUser=$dockeruser -PregistryPassword=$dockerkey -Pversion=$TRAVIS_BRANCH

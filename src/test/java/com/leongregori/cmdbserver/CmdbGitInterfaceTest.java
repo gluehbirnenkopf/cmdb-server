@@ -1,4 +1,4 @@
-package com.leongregori.cmdbclient;
+package com.leongregori.cmdbserver;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Value;

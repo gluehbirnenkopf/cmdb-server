@@ -1,6 +1,7 @@
 plugins {
 	id 'org.springframework.boot' version '2.2.5.RELEASE'
 	id 'io.spring.dependency-management' version '1.0.9.RELEASE'
+	id 'com.google.cloud.tools.jib' version '0.9.11'
 	id 'java'
 }
 
@@ -25,4 +26,24 @@ dependencies {
 
 test {
 	useJUnitPlatform()
+}
+
+//Taks definition:
+tasks.build.dependsOn tasks.jib
+//tasks.build.dependsOn tasks.jibDockerBuild
+
+//Config:
+jib {
+	container {
+	}
+	from {
+		image = "${baseImage}"
+	}
+	to {
+		image = "${registryName}/${rootProject.name}:${version}"
+		auth {
+			username = "${registryUser}" // Defined in 'gradle.properties'.
+			password = "${registryPassword}"
+		}
+	}
 }
