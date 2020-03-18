@@ -1,6 +1,6 @@
-# CMDB-restapi
+# cmdb-server
 
-The Service reads a given CMDB Repo path via a HTTP Request, handles Authentication and delivers the requested properties as JSON.
+The Service reads a given CMDB Repo path via a HTTP Request, handles Authentication and delivers the requested properties as JSON. It also integrates the features for CI, which are shown in the [Gradle-Jib Repository](https://github.com/gluehbirnenkopf/gradle-jib)
 
 ## Get API Spec, to be done by HATEOAS in future
 ```bash
