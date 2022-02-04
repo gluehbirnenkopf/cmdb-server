@@ -12,8 +12,6 @@ http://localhost:8080/api/
 ## Request a File from CMDB
 ```bash
 http://localhost:8080/api/getProperties/{gitCmdbBranch}/{filePathInGitRepo}"
-# Path in GitHub:
-https://github.ibmgcloud.net/blw-msa/CMDB/blob/master/cloud/jira.properties
 # API Request:
 http://localhost:8080/api/getProperties/master/cloud/jira.properties
 ```
